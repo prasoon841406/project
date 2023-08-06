@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:form="http://www.springframework.org/tags/form">
+
+<head>
+<link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+   
+    <meta charset="UTF-8">
+    <title>Employee Form</title>
+    <style>
+    	body{
+    		text-align: center;
+    		
+    		
+    	}
+    	
+    	.table{
+    		margin-left: auto;
+            margin-right: auto;
+            background-color: aqua;
+    	}
+    </style> 
+    
+</head>
+<body >
+
+    <main><h1>Employee Form</h1>
+    <form th:action="@{/saveProject}" th:object="${project}" method="post" class="form">
+    
+        <table class="table" border="3">
+            <tr>
+                <td><label for="projectName">Project Name:</label></td>
+                <td><input type="text" id="projectName" th:field="*{projectName}" required></td>
+            </tr>
+            <tr>
+                <td><label for="projectCode">Project Code:</label></td>
+                <td><input type="text" id="projectCode" th:field="*{projectCode}" required></td>
+            </tr>
+            <tr>
+                <td><label for="contactPerson">Contact Person:</label></td>
+                <td><input type="text" id="contactPerson" th:field="*{contactPerson}" required></td>
+            </tr>
+            <tr>
+                <td><label for="startDate">Start Date:</label></td>
+                <td><input type="date" id="startDate" name="startDate" th:field="*{startDate}" required></td>
+            </tr>
+            <tr>
+    <td><label for="endDate">End Date:</label></td>
+    <td><input type="date" id="endDate" name="endDate" th:field="*{endDate}" required></td>
+</tr>
+            <tr>
+                <td><label for="projectRemark">Remarks:</label></td>
+                <td><input type="text" id="projectRemark" th:field="*{projectRemark}" required></td>
+            </tr>
+            
+     <tr>
+    <td><label for="customerVo.customerId">Customer Name:</label></td>
+    <td>
+        <select id="customerId" name="customerId">
+            <option value="">Select Customer</option>
+            <option th:each="cus : ${customers}" th:value="${cus.customerId}" th:text="${cus.customerName}"></option>
+        </select>
+    </td>
+</tr>
+<tr>
+    <td><label for="managerVo.managerId">Manager Name:</label></td>
+    <td>
+        <select id="managerId" name="managerId">
+            <option value="">Select Manager</option>
+            <option th:each="man : ${managers}" th:value="${man.managerId}" th:text="${man.managerName}"></option>
+        </select>
+    </td>
+</tr> 
+        </table>
+        <br><button type="submit">Submit</button>
+    </form></main>
+    <aside>Ads</aside>
+    <footer>Footer</footer>
+    
+</body>
+</html>
